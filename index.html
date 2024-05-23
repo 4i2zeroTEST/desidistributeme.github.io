@@ -2,7 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DESI DISTRIBUTE ME</title>
+<title>DesiDistro</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
 <style>
         body {
             background: linear-gradient(to right, #f7cbd3, #c7ffc9);
@@ -42,14 +46,28 @@
     <h1>DESIDISTRIBUTE.ME COMMING SOON!</h1>
     <p>Just 9 days left</p>
     
-    <audio id="myAudio" autoplay loop muted>
-        <source src="desidistribute.mp3" type="audio/mp3">
+    <audio id="myAudio" loop>
+        <source src="/assets/desidistribute.mp3" type="audio/mp3">
     </audio>
 
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             const audio = document.getElementById('myAudio');
-            audio.play();
+
+            // Play audio when user moves the mouse or clicks anywhere on the page
+            document.body.addEventListener('mousemove', startAudio);
+            document.body.addEventListener('click', startAudio);
+
+            function startAudio() {
+                // Wait for 2 seconds before playing the audio
+                setTimeout(() => {
+                    audio.play();
+                }, 2000);
+
+                // Remove event listeners after audio starts playing
+                document.body.removeEventListener('mousemove', startAudio);
+                document.body.removeEventListener('click', startAudio);
+            }
         });
     </script>
 </body>
